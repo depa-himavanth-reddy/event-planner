@@ -5,7 +5,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path=''><UserRegistration /></Route>
+        <Route path='/' element ={<UserRegistration/>} />
       </Routes>
     </Router>
   );
