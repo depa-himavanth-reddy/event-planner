@@ -3,7 +3,8 @@ import { InputLabel, MenuItem, FormControl, Select, FormHelperText } from '@mate
 import PropTypes from 'prop-types';
 
 const SelectionControlField = (props) => {
-  const { name, formik, labelName, options, mandatory } = props;
+  const { name, formik, labelName, mandatory } = props;
+  
   return (
     <FormControl fullWidth>
       <InputLabel id="labelID" required={mandatory}>
@@ -16,17 +17,10 @@ const SelectionControlField = (props) => {
         error={formik.touched[name] && Boolean(formik.errors[name])}
         required={mandatory}
       >
-        {options.length > 0 ? (
-          options.map((option) => {
-            return (
-              <MenuItem key={option.id} value={option.value}>
-                {option.name}
-              </MenuItem>
-            );
-          })
-        ) : (
-          <MenuItem value="">No Data</MenuItem>
-        )}
+        <MenuItem value="day" >Today</MenuItem>
+        <MenuItem value="week">This week</MenuItem>
+        <MenuItem value="month">This month</MenuItem>
+        <MenuItem value="year">This year</MenuItem>
       </Select>
       <FormHelperText style={{ color: 'red' }}>{formik.touched[name] && formik.errors[name]}</FormHelperText>
     </FormControl>
@@ -36,7 +30,6 @@ SelectionControlField.propTypes = {
   name: PropTypes.string,
   formik: PropTypes.object,
   labelName: PropTypes.string,
-  options: PropTypes.array,
   mandatory: PropTypes.bool
 };
 
@@ -44,7 +37,6 @@ SelectionControlField.defaultProps = {
   name: '',
   formik: {},
   labelName: '',
-  options: [],
   mandatory: false
 };
 export default SelectionControlField;
