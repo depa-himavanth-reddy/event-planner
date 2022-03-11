@@ -11,10 +11,10 @@ const EventDetailsView = (props) => {
           <LabelDataItem labelName="Name" value={eventData.name} />
         </Grid>
         <Grid item container spacing={1} xs={12} sm={6} alignItems='center'>
-          <LabelDataItem labelName="Event Started" value={eventData.startDate} />
+          <LabelDataItem labelName="Reccurence Type" value={eventData.reccurenceType} />
         </Grid>
         <Grid item container spacing={1} xs={12} sm={6} alignItems='center'>
-          <LabelDataItem labelName="Reccurence Type" value={eventData.reccurenceType} />
+          <LabelDataItem labelName="Event Started" value={eventData.startDate} />
         </Grid>
       </Grid>
   );

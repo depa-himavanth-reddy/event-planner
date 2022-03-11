@@ -10,7 +10,6 @@ import { todayDate, startOfWeek, endOfWeek, startOfMonth, endOfMonth, startOfYea
 const Events = () => {
   const navigate = useNavigate();
   const [state, setState] = useState({
-    events: [],
     display: false,
     selectedEvent: {}
   });
@@ -22,6 +21,9 @@ const Events = () => {
   });
   const redirectToEventCreation = () => {
     navigate('/create_event');
+  };
+  const redirectToEventView = (eventID) => {
+    navigate(`/event_details/${eventID}`);
   };
   useEffect(() => {
     loadEvents();
@@ -82,13 +84,15 @@ const Events = () => {
           {(getEvents(eventForm.values.reccurenceType).length > 0 &&
             getEvents(eventForm.values.reccurenceType).map((event) => {
               return (
-                <Box padding={2} key={event.id}>
-                  <Card style={{ padding: 12 }}  elevation={2}>
+                <Box py={1} key={event.id}>
+                  <Card elevation={2}>
                     <CardContent>
-                      <EventDetailsView eventData={event} />
+                        <Grid container spacing={2}>
+                            <EventDetailsView eventData={event} />
+                        </Grid>
                     </CardContent>
                     <CardActions>
-                      <Button variant="contained" color="primary" onClick={() => onRequestDeleteEvent(event)}>
+                      <Button variant="contained" color="primary" onClick={() => redirectToEventView(event.id)}>
                         Show Event
                       </Button>
                       <Button variant="contained" color="secondary" onClick={() => onRequestDeleteEvent(event)}>
