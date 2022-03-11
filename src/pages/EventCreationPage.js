@@ -120,7 +120,7 @@ const EventCreationPage = () => {
                   formik={eventForm}
                   id="endDate"
                   name="endDate"
-                  mandatory={true}
+                  mandatory={false}
                   labelName="Event end date"
                   disableFutureDates={false}
                   disablePastDates={true}
@@ -128,7 +128,7 @@ const EventCreationPage = () => {
                 />
               </Grid>
               <Grid item xs={12} sm={12}>
-                <InputField formik={eventForm} label="Description" name="description" editshrink={true} mandatory={true} />
+                <InputField formik={eventForm} label="Description" name="description" editshrink={true} mandatory={false} />
               </Grid>
               <Grid item xs={12} sm={12}>
                 <Button variant="contained" onClick={eventForm.handleSubmit} color="primary">

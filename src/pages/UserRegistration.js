@@ -58,8 +58,7 @@ const UserRegistration = () => {
     });
   };
   return (
-    <Container component="main" maxWidth="xs">
-      {/* <Toolbar /> */}
+    <Container maxWidth="xs">
       <Paper elevation={3} style={{ borderRadius: '15px' }}>
         <div className={classes.paper}>
           <Typography variant="h5" color="primary">

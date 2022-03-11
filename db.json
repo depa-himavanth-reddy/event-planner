@@ -8,5 +8,62 @@
       "id": 1
     }
   ],
-  "events": []
+  "events": [
+    {
+      "name": "test",
+      "reccurenceType": "day",
+      "startDate": "2022-01-02",
+      "endDate": "",
+      "description": "",
+      "id": 1
+    },
+    {
+      "name": "today eve",
+      "reccurenceType": "day",
+      "startDate": "2022-03-11",
+      "endDate": "",
+      "description": "",
+      "id": 2
+    },
+    {
+      "name": "this week",
+      "reccurenceType": "week",
+      "startDate": "2022-03-01",
+      "endDate": "",
+      "description": "",
+      "id": 3
+    },
+    {
+      "name": "test",
+      "reccurenceType": "day",
+      "startDate": "2022-03-11",
+      "endDate": "",
+      "description": "",
+      "id": 4
+    },
+    {
+      "name": "note 2",
+      "reccurenceType": "day",
+      "startDate": "2022-03-12",
+      "endDate": "",
+      "description": "",
+      "id": 5
+    },
+    {
+      "name": "note3",
+      "reccurenceType": "day",
+      "startDate": "2022-03-19",
+      "endDate": "",
+      "description": "",
+      "id": 6
+    },
+    {
+      "name": "note 5",
+      "reccurenceType": "day",
+      "startDate": "2022-06-08",
+      "endDate": "",
+      "description": "",
+      "id": 7
+    }
+  ]
 }
