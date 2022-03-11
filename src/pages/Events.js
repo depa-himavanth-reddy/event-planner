@@ -6,6 +6,8 @@ import { useFormik } from 'formik';
 import axios from 'axios';
 import EventDetailsView from '../components/EventDetailsView';
 import ConfirmationDialog from '../components/ConfirmationDialog';
+import StatusNotifier from '../components/StatusNotifier';
+
 import { todayDate, startOfWeek, endOfWeek, startOfMonth, endOfMonth, startOfYear, endOfYear } from '../utils/Date';
 const Events = () => {
   const navigate = useNavigate();
@@ -13,6 +15,17 @@ const Events = () => {
     display: false,
     selectedEvent: {}
   });
+  const [status, setStatus] = useState({
+      display:false,
+      message:'',
+      actionType: 'success'
+  })
+  const options= [
+    {id: 1, value: "day", label: "Today"},
+    {id: 2, value: "week", label: "This week"},
+    {id: 3, value: "month", label: "This month"},
+    {id: 4, value: "year", label: "This year"},
+  ]
   const [events, setEvents] = useState([]);
   const eventForm = useFormik({
     initialValues: {
@@ -50,6 +63,17 @@ const Events = () => {
       if (response && response.status === 200) {
         onCloseDialog();
         loadEvents();
+        setStatus({
+            display:true,
+            message:'Event deleted successfully',
+            actionType: 'success'
+        })
+        setTimeout(()=>{
+            setStatus({
+                ...status,
+                display:true
+            })
+        },1500)
       }
     });
   };
@@ -75,6 +99,7 @@ const Events = () => {
             name="reccurenceType"
             editshrink={true}
             mandatory={true}
+            options={options}
           />
         </Grid>
         <Grid item xs={12} sm={12}>
@@ -107,6 +132,7 @@ const Events = () => {
         </Grid>
       </Grid>
       <ConfirmationDialog display={state.display} closeDialog={onCloseDialog} onDeleteSelected={onDeleteSelected} />
+    <StatusNotifier showNotification={status.display} message={status.message} actionType={ status.actionType}/>
     </Container>
   );
 };

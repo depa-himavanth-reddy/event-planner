@@ -59,7 +59,7 @@ const EventCreationPage = () => {
   const eventForm = useFormik({
     initialValues: {
       name: '',
-      reccurenceType: 'day',
+      reccurenceType: '',
       startDate: '',
       endDate: '',
       description: ''
@@ -73,7 +73,13 @@ const EventCreationPage = () => {
     enableReinitialize: true,
     validationSchema: validationSchema
   });
-  console.log(eventForm);
+  const options= [
+    {id: 1, value: "once", label: "Single"},
+    {id: 2, value: "day", label: "Daily"},
+    {id: 3, value: "week", label: "Weekly"},
+    {id: 4, value: "month", label: "Monthly"},
+    {id: 5, value: "year", label: "Yearly"},
+  ]
   const createEvent = () => {
     axios.post('http://localhost:8000/events', eventForm.values).then((response) => {
       if (response && response.status === 201) {
@@ -101,6 +107,7 @@ const EventCreationPage = () => {
                   name="reccurenceType"
                   editshrink={true}
                   mandatory={true}
+                  options={options}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>

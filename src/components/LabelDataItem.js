@@ -16,7 +16,7 @@ function LabelDataItem(props) {
       </Grid>
       <Grid item xs={7} align="left">
         <Typography variant="caption" component="span">
-          {value}
+          {value !== '' ? value : '-'}
         </Typography>
       </Grid>
     </React.Fragment>

@@ -3,7 +3,7 @@ import { InputLabel, MenuItem, FormControl, Select, FormHelperText } from '@mate
 import PropTypes from 'prop-types';
 
 const SelectionControlField = (props) => {
-  const { name, formik, labelName, mandatory } = props;
+  const { name, formik, labelName, mandatory, options } = props;
   
   return (
     <FormControl fullWidth>
@@ -17,10 +17,7 @@ const SelectionControlField = (props) => {
         error={formik.touched[name] && Boolean(formik.errors[name])}
         required={mandatory}
       >
-        <MenuItem value="day" >Today</MenuItem>
-        <MenuItem value="week">This week</MenuItem>
-        <MenuItem value="month">This month</MenuItem>
-        <MenuItem value="year">This year</MenuItem>
+        {options.map(option=><MenuItem key ={option.id} value={option.value} >{option.label}</MenuItem>)}
       </Select>
       <FormHelperText style={{ color: 'red' }}>{formik.touched[name] && formik.errors[name]}</FormHelperText>
     </FormControl>
@@ -29,6 +26,7 @@ const SelectionControlField = (props) => {
 SelectionControlField.propTypes = {
   name: PropTypes.string,
   formik: PropTypes.object,
+  options: PropTypes.array,
   labelName: PropTypes.string,
   mandatory: PropTypes.bool
 };
@@ -36,6 +34,7 @@ SelectionControlField.propTypes = {
 SelectionControlField.defaultProps = {
   name: '',
   formik: {},
+  options: [],
   labelName: '',
   mandatory: false
 };
